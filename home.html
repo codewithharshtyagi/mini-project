@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduSafe | Disaster Preparedness System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* ===== HOME PAGE EXTRA STYLING ===== */
+
+        .home-hero {
+            min-height: 560px;
+            background:
+                linear-gradient(
+                    rgba(0, 38, 90, 0.82),
+                    rgba(0, 20, 55, 0.88)
+                ),
+                url("/static/images/home.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 80px 25px;
+        }
+
+        .home-hero-content {
+            max-width: 900px;
+        }
+
+        .home-hero h1 {
+            font-size: 58px;
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .home-hero h1 span {
+            color: #69c7ff;
+        }
+
+        .home-hero p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #e7f5ff;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.7);
+        }
+
+        .hero-secondary:hover {
+            background: white;
+            color: #0759c8;
+        }
+
+        /* ABOUT */
+
+        .about-home {
+            padding: 90px 7%;
+            background: white;
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            color: #0759c8;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* DISASTER SECTION */
+
+        .disaster-section {
+            padding: 90px 7%;
+            background: #f4f7fb;
+        }
+
+        .home-title {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .home-title h2 {
+            font-size: 40px;
+            color: #0759c8;
+            margin-bottom: 12px;
+        }
+
+        .home-title p {
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        .disaster-home-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .disaster-home-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .disaster-home-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+        }
+
+        .disaster-home-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .disaster-home-content {
+            padding: 22px;
+        }
+
+        .disaster-home-content h3 {
+            color: #0759c8;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .disaster-home-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .small-link {
+            color: #0759c8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .small-link:hover {
+            text-decoration: underline;
+        }
+
+        /* HOW IT WORKS */
+
+        .how-section {
+            padding: 90px 7%;
+            background: white;
+        }
+
+        .steps {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            background: #f7faff;
+            border: 1px solid #e3ecf7;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg, #0759c8, #0d8bea);
+            color: white;
+
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            color: #0759c8;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* PREPARE SECTION */
+
+        .prepare-section {
+            padding: 90px 7%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0759c8,
+                    #087fd1
+                );
+
+            color: white;
+        }
+
+        .prepare-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .prepare-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .prepare-content p {
+            line-height: 1.8;
+            color: #e8f5ff;
+            margin-bottom: 25px;
+        }
+
+        .prepare-list {
+            list-style: none;
+        }
+
+        .prepare-list li {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .prepare-box {
+            background: rgba(255,255,255,0.12);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .prepare-box h3 {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .prepare-item {
+            background: rgba(255,255,255,0.1);
+            padding: 14px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        /* FEATURES */
+
+        .features-section {
+            padding: 90px 7%;
+            background: #f4f7fb;
+        }
+
+        .feature-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.07);
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #0759c8;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+
+        .home-cta {
+            padding: 90px 25px;
+            text-align: center;
+            background: white;
+        }
+
+        .home-cta h2 {
+            font-size: 40px;
+            color: #17202a;
+            margin-bottom: 15px;
+        }
+
+        .home-cta p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 950px) {
+
+            .disaster-home-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid,
+            .prepare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .home-hero h1 {
+                font-size: 40px;
+            }
+
+            .home-hero p {
+                font-size: 17px;
+            }
+
+            .disaster-home-grid,
+            .steps,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2,
+            .prepare-content h2,
+            .home-cta h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+
+            <div class="logo-icon">
+                🛡️
+            </div>
+
+            <div class="logo-text">
+
+                <h2>EduSafe</h2>
+
+                <span>
+                    Disaster Preparedness System
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/disasters">Disasters</a>
+            </li>
+
+            <li>
+                <a href="/checklist">Checklist</a>
+            </li>
+
+            <li>
+                <a href="/emergency">Emergency</a>
+            </li>
+
+            <li>
+                <a href="/about">About</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="home-hero">
+
+    <div class="home-hero-content">
+
+        <h1>
+            Be Prepared.<br>
+            <span>Stay Safe.</span>
+        </h1>
+
+        <p>
+            EduSafe is a disaster preparedness system designed
+            to help students and communities understand,
+            prepare for and respond to emergencies.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/disasters" class="btn primary">
+                Explore Disaster Guides →
+            </a>
+
+            <a href="/checklist"
+               class="btn hero-secondary">
+                Prepare Your Kit
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-home">
+
+    <div class="about-grid">
+
+        <div class="about-image">
+
+            <img
+                src="{{ url_for('static', filename='images/home.jpg') }}"
+                alt="Disaster Preparedness">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <h2>About EduSafe</h2>
+
+            <p>
+                EduSafe is a simple and educational disaster
+                preparedness platform created to provide useful
+                safety information in one place.
+            </p>
+
+            <p>
+                From earthquakes and floods to fires and cyclones,
+                EduSafe explains what people can do before, during
+                and after an emergency.
+            </p>
+
+            <p>
+                Our goal is to make disaster preparedness easier
+                to understand, especially for students and young
+                learners.
+            </p>
+
+            <a href="/about" class="btn primary">
+                Learn More About Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DISASTERS ================= -->
+
+<section class="disaster-section">
+
+    <div class="home-title">
+
+        <h2>Know the Disaster</h2>
+
+        <p>
+            Learn about common disasters and understand the
+            basic safety actions that can help protect you
+            and your family.
+        </p>
+
+    </div>
+
+
+    <div class="disaster-home-grid">
+
+
+        <!-- EARTHQUAKE -->
+
+        <div class="disaster-home-card">
+
+            <img
+                src="{{ url_for('static', filename='images/earthquake.jpg') }}"
+                alt="Earthquake">
+
+            <div class="disaster-home-content">
+
+                <h3>🌍 Earthquake</h3>
+
+                <p>
+                    Sudden shaking of the ground caused by
+                    movement beneath the Earth's surface.
+                </p>
+
+                <a href="/earthquake" class="small-link">
+                    Learn Safety Tips →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FLOOD -->
+
+        <div class="disaster-home-card">
+
+            <img
+                src="{{ url_for('static', filename='images/flood.jpg') }}"
+                alt="Flood">
+
+            <div class="disaster-home-content">
+
+                <h3>🌊 Flood</h3>
+
+                <p>
+                    Water covering normally dry land due to
+                    rainfall, rivers, storms or other causes.
+                </p>
+
+                <a href="/flood" class="small-link">
+                    Learn Safety Tips →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FIRE -->
+
+        <div class="disaster-home-card">
+
+            <img
+                src="{{ url_for('static', filename='images/fire.jpg') }}"
+                alt="Fire">
+
+            <div class="disaster-home-content">
+
+                <h3>🔥 Fire</h3>
+
+                <p>
+                    A rapidly spreading event that produces
+                    heat, flames and dangerous smoke.
+                </p>
+
+                <a href="/fire" class="small-link">
+                    Learn Safety Tips →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CYCLONE -->
+
+        <div class="disaster-home-card">
+
+            <img
+                src="{{ url_for('static', filename='images/cyclone.jpg') }}"
+                alt="Cyclone">
+
+            <div class="disaster-home-content">
+
+                <h3>🌪️ Cyclone</h3>
+
+                <p>
+                    A powerful rotating storm that can bring
+                    strong winds, heavy rain and flooding.
+                </p>
+
+                <a href="/cyclone" class="small-link">
+                    Learn Safety Tips →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-section">
+
+    <div class="home-title">
+
+        <h2>How EduSafe Helps</h2>
+
+        <p>
+            Follow four simple steps to become better prepared
+            for unexpected emergencies.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>Learn</h3>
+
+            <p>
+                Understand different disasters and their
+                possible risks.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>Prepare</h3>
+
+            <p>
+                Keep important supplies and emergency
+                information ready.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>Respond</h3>
+
+            <p>
+                Follow appropriate safety procedures when
+                an emergency occurs.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>Recover</h3>
+
+            <p>
+                Stay informed and take safe steps after
+                the immediate danger has passed.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PREPARE ================= -->
+
+<section class="prepare-section">
+
+    <div class="prepare-grid">
+
+        <div class="prepare-content">
+
+            <h2>Build Your Emergency Kit</h2>
+
+            <p>
+                A basic emergency kit can help you manage
+                unexpected situations until additional help
+                becomes available.
+            </p>
+
+            <ul class="prepare-list">
+
+                <li>✓ Drinking water</li>
+
+                <li>✓ First-aid supplies</li>
+
+                <li>✓ Flashlight and batteries</li>
+
+                <li>✓ Essential medicines</li>
+
+                <li>✓ Important documents</li>
+
+                <li>✓ Emergency contact information</li>
+
+            </ul>
+
+            <a href="/checklist"
+               class="btn hero-secondary">
+
+                Open Full Checklist →
+
+            </a>
+
+        </div>
+
+
+        <div class="prepare-box">
+
+            <h3>Emergency Readiness</h3>
+
+            <div class="prepare-item">
+                🎒 Emergency Kit
+            </div>
+
+            <div class="prepare-item">
+                💧 Drinking Water
+            </div>
+
+            <div class="prepare-item">
+                🔦 Flashlight
+            </div>
+
+            <div class="prepare-item">
+                🩹 First Aid
+            </div>
+
+            <div class="prepare-item">
+                📱 Emergency Contacts
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section">
+
+    <div class="home-title">
+
+        <h2>Why Use EduSafe?</h2>
+
+        <p>
+            Designed to make disaster preparedness simple,
+            accessible and easy to understand.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>Simple Information</h3>
+
+            <p>
+                Safety information is presented in a clear
+                and easy-to-understand format.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚨
+            </div>
+
+            <h3>Emergency Support</h3>
+
+            <p>
+                Quickly access emergency information when
+                you need it most.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ✅
+            </div>
+
+            <h3>Preparation Checklist</h3>
+
+            <p>
+                Use a simple checklist to make sure important
+                emergency supplies are ready.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>Easy to Access</h3>
+
+            <p>
+                Access disaster guides and preparedness
+                information through a simple website.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎓
+            </div>
+
+            <h3>Student Friendly</h3>
+
+            <p>
+                Created with simple language to support
+                students and young learners.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>Safety First</h3>
+
+            <p>
+                Encourages awareness, preparation and
+                responsible emergency response.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="home-cta">
+
+    <h2>Start Preparing Today</h2>
+
+    <p>
+        Don't wait until an emergency happens. Learn the
+        basics, prepare your supplies and understand what
+        actions to take during a disaster.
+    </p>
+
+    <a href="/disasters" class="btn primary">
+        Explore Disaster Guides →
+    </a>
+
+    <a href="/checklist" class="btn danger">
+        View Checklist
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>EduSafe</h2>
+
+    <p>
+        Disaster Preparedness System
+    </p>
+
+    <p>
+        Learn • Prepare • Respond • Recover
+    </p>
+
+    <p>
+        © 2026 EduSafe. Stay prepared. Stay safe.
+    </p>
+
+</footer>
+
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>EduSafe | Earthquake</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">🛡️</div>
+
+<div>
+
+<h1>EduSafe</h1>
+
+<p>Disaster Preparedness System</p>
+
+</div>
+
+</div>
+
+
+<nav>
+
+<a href="/">Home</a>
+
+<a href="/disasters">Disasters</a>
+
+<a href="/checklist">Checklist</a>
+
+<a href="/emergency">Emergency</a>
+
+<a href="/about">About</a>
+
+</nav>
+
+</header>
+
+
+<section class="page-hero">
+
+<h2>🌎 Earthquake Safety</h2>
+
+<p>Know what to do before, during and after an earthquake.</p>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<div class="detail">
+
+<div><img src="static\images\earthquake.jpg" alt="image not found"></div>
+
+
+<h2>What is an Earthquake?</h2>
+
+<p>
+
+An earthquake is a sudden shaking of the ground
+caused by movement beneath the Earth's surface.
+
+</p>
+
+<br>
+
+<h2>Safety Tips</h2>
+
+<ul>
+
+<li>Stay calm.</li>
+
+<li>Drop, Cover and Hold.</li>
+
+<li>Stay away from windows.</li>
+
+<li>Do not use elevators.</li>
+
+<li>After shaking stops, move to a safe open area.</li>
+
+</ul>
+
+</br>
+
+<a href="/disasters"
+class="btn primary">
+
+← Back to Disasters
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="emergency-floating">
+
+<button id="alarmButton"
+class="emergency-button"
+onclick="toggleEmergencyAlarm()">
+
+🚨
+
+</button>
+
+</div>
+
+
+<footer>
+
+<p>© 2026 EduSafe</p>
+
+</footer>
+
+
+<script src="{{ url_for('static',
+filename='script.js') }}"></script>
+
+</body>
+
+</html>

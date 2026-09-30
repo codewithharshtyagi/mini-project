@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>EduSafe | Emergency</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">🛡️</div>
+
+<div>
+
+<h1>EduSafe</h1>
+
+<p>Disaster Preparedness System</p>
+
+</div>
+
+</div>
+
+
+<nav>
+
+<a href="/">Home</a>
+
+<a href="/disasters">Disasters</a>
+
+<a href="/checklist">Checklist</a>
+
+<a href="/emergency">Emergency</a>
+
+<a href="/about">About</a>
+
+</nav>
+
+</header>
+
+
+<section class="page-hero">
+
+<h2>🚨 Emergency Contacts</h2>
+
+<p>
+
+Important emergency information
+
+</p>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<div class="emergency-grid">
+
+
+<div class="emergency-box">
+
+<div class="emergency-icon">🚓</div>
+
+<h3>Police</h3>
+
+<div class="number">112</div>
+
+<p>
+General emergency assistance.
+</p>
+
+</div>
+
+
+<div class="emergency-box">
+
+<div class="emergency-icon">🚒</div>
+
+<h3>Fire</h3>
+
+<div class="number">101</div>
+
+<p>
+Fire emergency assistance.
+</p>
+
+</div>
+
+
+<div class="emergency-box">
+
+<div class="emergency-icon">🚑</div>
+
+<h3>Ambulance</h3>
+
+<div class="number">108</div>
+
+<p>
+Urgent medical emergency assistance.
+</p>
+
+</div>
+
+
+<div class="emergency-box">
+
+<div class="emergency-icon">📞</div>
+
+<h3>Emergency</h3>
+
+<div class="number">112</div>
+
+<p>
+National emergency response number.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="emergency-floating">
+
+<button id="alarmButton"
+class="emergency-button"
+onclick="toggleEmergencyAlarm()">
+
+🚨
+
+</button>
+
+</div>
+
+
+<footer>
+
+<p>© 2026 EduSafe</p>
+
+<p>
+Stay Calm • Stay Alert • Stay Safe
+</p>
+
+</footer>
+
+
+<script src="{{ url_for('static',
+filename='script.js') }}"></script>
+
+</body>
+
+</html>

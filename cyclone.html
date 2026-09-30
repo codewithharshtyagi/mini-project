@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>EduSafe | Earthquake</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">🛡️</div>
+
+<div>
+
+<h1>EduSafe</h1>
+
+<p>Disaster Preparedness System</p>
+
+</div>
+
+</div>
+
+
+<nav>
+
+<li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/disasters">Disasters</a>
+            </li>
+
+            <li>
+                <a href="/checklist">Checklist</a>
+            </li>
+
+            <li>
+                <a href="/emergency">Emergency</a>
+            </li>
+
+            <li>
+                <a href="/about">About</a>
+            </li>
+
+
+</nav>
+
+</header>
+
+
+<section class="page-hero">
+
+<h2>🌎 Cyclone Safety</h2>
+
+<p>Know what to do before, during and after an cyclone.</p>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<div class="detail">
+
+<div><img src="static\images\cyclone.jpg" alt="image not found"></div>
+<p>
+
+A cyclone is a powerful rotating storm with strong winds
+
+and heavy rainfall that can cause flooding and damage.
+</p>
+
+<br>
+<h2>Safety Tips</h2>
+
+<ul>
+
+<li>Stay indoors and remain calm.</li>
+
+<li>Keep doors and windows closed.</li>
+
+<li>Stay away from windows and glass.</li>
+
+<li>Keep emergency supplies ready.</li>
+
+<li>Follow official weather warnings and evacuation orders.</li>
+
+</ul>
+</br>
+
+<a href="/disasters"
+class="btn primary">
+
+← Back to Disasters
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="emergency-floating">
+
+<button id="alarmButton"
+class="emergency-button"
+onclick="toggleEmergencyAlarm()">
+
+🚨
+
+</button>
+
+</div>
+
+
+<footer>
+
+<p>© 2026 EduSafe</p>
+
+</footer>
+
+
+<script src="{{ url_for('static',
+filename='script.js') }}"></script>
+
+</body>
+
+</html>

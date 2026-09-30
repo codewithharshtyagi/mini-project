@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduSafe | Explore Disaster Guides</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        .guide-hero {
+            background: linear-gradient(135deg, #063b91, #0795df);
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .guide-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .guide-hero p {
+            font-size: 18px;
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .guide-section {
+            padding: 70px 7%;
+            background: #f4f7fb;
+        }
+
+        .guide-intro {
+            max-width: 850px;
+            margin: 0 auto 45px;
+            text-align: center;
+        }
+
+        .guide-intro h2 {
+            color: #0759c8;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .guide-intro p {
+            color: #667085;
+            line-height: 1.8;
+        }
+
+        .guide-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.13);
+        }
+
+        .guide-card h2 {
+            color: #0759c8;
+            margin-bottom: 12px;
+        }
+
+        .guide-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .guide-card h3 {
+            color: #17202a;
+            margin-bottom: 10px;
+        }
+
+        .guide-card ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .guide-card li {
+            margin: 9px 0;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .guide-tag {
+            display: inline-block;
+            background: #e8f3ff;
+            color: #0759c8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .guide-button {
+            display: inline-block;
+            background: #0759c8;
+            color: white;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .guide-button:hover {
+            background: #06439a;
+        }
+
+        .before-section {
+            padding: 70px 7%;
+            background: white;
+        }
+
+        .before-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .before-card {
+            padding: 28px;
+            border-radius: 16px;
+            background: #f7faff;
+            border: 1px solid #e1eaf5;
+        }
+
+        .before-card .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .before-card h3 {
+            color: #0759c8;
+            margin-bottom: 10px;
+        }
+
+        .before-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .guide-cta {
+            padding: 75px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #0759c8, #0b8de3);
+            color: white;
+        }
+
+        .guide-cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .guide-cta p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        @media(max-width: 800px) {
+
+            .guide-grid,
+            .before-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-hero h1 {
+                font-size: 36px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+
+            <div class="logo-icon">
+                🛡️
+            </div>
+
+            <div class="logo-text">
+
+                <h2>EduSafe</h2>
+
+                <span>
+                    Disaster Preparedness System
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/disasters">Disasters</a>
+            </li>
+
+            <li>
+                <a href="/checklist">Checklist</a>
+            </li>
+
+            <li>
+                <a href="/emergency">Emergency</a>
+            </li>
+
+            <li>
+                <a href="/about">About</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="guide-hero">
+
+    <h1>🌍 Explore Disaster Guides</h1>
+
+    <p>
+        Learn how to recognize common disasters and understand
+        important safety actions before, during and after an emergency.
+    </p>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="guide-section">
+
+    <div class="guide-intro">
+
+        <h2>Know What To Do</h2>
+
+        <p>
+            Every disaster is different. Understanding the correct
+            response can help you stay calm and make safer decisions.
+            Explore the guides below to learn basic preparedness steps.
+        </p>
+
+    </div>
+
+
+    <div class="guide-grid">
+
+
+        <!-- EARTHQUAKE -->
+
+        <div class="guide-card">
+
+            <span class="guide-tag">
+                NATURAL DISASTER
+            </span>
+
+            <h2>🌍 Earthquake</h2>
+
+            <p>
+                An earthquake is sudden ground shaking caused by
+                movement beneath the Earth's surface.
+            </p>
+
+            <h3>Remember</h3>
+
+            <ul>
+                <li>Drop, Cover and Hold.</li>
+                <li>Stay away from windows.</li>
+                <li>Do not use elevators.</li>
+                <li>Move to a safe open area after shaking stops.</li>
+            </ul>
+
+            <a href="/earthquake" class="guide-button">
+                Open Earthquake Guide →
+            </a>
+
+        </div>
+
+
+        <!-- FLOOD -->
+
+        <div class="guide-card">
+
+            <span class="guide-tag">
+                WATER HAZARD
+            </span>
+
+            <h2>🌊 Flood</h2>
+
+            <p>
+                A flood occurs when water covers normally dry land
+                due to heavy rainfall, overflowing rivers or storms.
+            </p>
+
+            <h3>Remember</h3>
+
+            <ul>
+                <li>Move to higher ground.</li>
+                <li>Never walk through flood water.</li>
+                <li>Never drive through flooded roads.</li>
+                <li>Follow official warnings.</li>
+            </ul>
+
+            <a href="/flood" class="guide-button">
+                Open Flood Guide →
+            </a>
+
+        </div>
+
+
+        <!-- FIRE -->
+
+        <div class="guide-card">
+
+            <span class="guide-tag">
+                FIRE HAZARD
+            </span>
+
+            <h2>🔥 Fire</h2>
+
+            <p>
+                A fire can spread quickly and produce dangerous
+                heat and smoke.
+            </p>
+
+            <h3>Remember</h3>
+
+            <ul>
+                <li>Stay calm and raise the alarm.</li>
+                <li>Move away from smoke and flames.</li>
+                <li>Use stairs instead of elevators.</li>
+                <li>Do not return to a burning building.</li>
+            </ul>
+
+            <a href="/fire" class="guide-button">
+                Open Fire Guide →
+            </a>
+
+        </div>
+
+
+        <!-- CYCLONE -->
+
+        <div class="guide-card">
+
+            <span class="guide-tag">
+                WEATHER HAZARD
+            </span>
+
+            <h2>🌪️ Cyclone</h2>
+
+            <p>
+                A cyclone is a powerful rotating storm that can
+                bring strong winds, heavy rainfall and flooding.
+            </p>
+
+            <h3>Remember</h3>
+
+            <ul>
+                <li>Stay indoors during dangerous conditions.</li>
+                <li>Keep doors and windows closed.</li>
+                <li>Stay away from windows and glass.</li>
+                <li>Follow official weather warnings.</li>
+            </ul>
+
+            <a href="/cyclone" class="guide-button">
+                Open Cyclone Guide →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PREPAREDNESS ================= -->
+
+<section class="before-section">
+
+    <div class="guide-intro">
+
+        <h2>Before a Disaster</h2>
+
+        <p>
+            Preparation should begin before an emergency happens.
+            Small steps can make it easier to respond safely.
+        </p>
+
+    </div>
+
+
+    <div class="before-grid">
+
+        <div class="before-card">
+
+            <div class="icon">
+                🎒
+            </div>
+
+            <h3>Prepare Supplies</h3>
+
+            <p>
+                Keep water, food, first-aid items, flashlights
+                and other essential supplies ready.
+            </p>
+
+        </div>
+
+
+        <div class="before-card">
+
+            <div class="icon">
+                📱
+            </div>
+
+            <h3>Save Contacts</h3>
+
+            <p>
+                Keep important emergency contact numbers
+                easily accessible.
+            </p>
+
+        </div>
+
+
+        <div class="before-card">
+
+            <div class="icon">
+                🗺️
+            </div>
+
+            <h3>Know Safe Areas</h3>
+
+            <p>
+                Learn the safe areas and possible evacuation
+                routes around your home, college or workplace.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="guide-cta">
+
+    <h2>Be Ready Before You Need Help</h2>
+
+    <p>
+        Learn the basics, prepare your emergency supplies and
+        keep important information available.
+    </p>
+
+    <a href="/checklist"
+       class="btn hero-secondary">
+
+        Open Emergency Checklist →
+
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>EduSafe</h2>
+
+    <p>
+        Disaster Preparedness System
+    </p>
+
+    <p>
+        Learn • Prepare • Respond • Recover
+    </p>
+
+    <p>
+        © 2026 EduSafe. Stay prepared. Stay safe.
+    </p>
+
+</footer>
+
+
+<!-- ================= EMERGENCY BUTTON ================= -->
+
+<button id="alarmButton"
+        onclick="toggleEmergencyAlarm()"
+        title="Emergency Alarm">
+
+    🚨
+
+</button>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
